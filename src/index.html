@@ -10,41 +10,32 @@
     <meta name="description" content="">
 
     <!-- title -->
-    <title>DEMO - jQuery Breakpoint js</title>
+    <title>DEMO - jQuery Breakpoints js</title>
 </head>
 <body>
 
-    <div id="console"></div>
-
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="jquery.breakpoint.js"></script>
+    <script src="jquery.breakpoints.js"></script>
     <script>
-        $(function() {
-            $.breakpoint.set([
-                {
-                    name: 'sp',
-                    max: 738
-                },
-                {
-                    name: 'tb',
-                    max: 900
-                },
-                {
-                    name: 'pc',
-                    max: Infinity
-                }
-            ]);
+        $.breakpoints({
+            sp: {
+                min: 0,
+                max: 750
+            },
+            pc: {
+                min: 751,
+                max: Infinity
+            }
+        });
 
-            $.breakpoint.watch();
+        $.breakpoints.on('sp', function(e, obj) {
+            console.log(e, obj);
+        });
 
-            $.breakpoint.on('sp => tb', function() { console.log('sp => tb') });
-            $.breakpoint.on('tb => pc', function() { console.log('tb => pc') });
-            $.breakpoint.on('pc => tb', function() { console.log('pc => tb') });
-            $.breakpoint.on('tb => sp', function() { console.log('tb => sp') });
-
-            $.breakpoint.on('sp => pc', function() { console.log('sp => pc') });
-       });
+        $.breakpoints.on('pc', function(e, obj) {
+            console.log(e, obj);
+        });
     </script>
 </body>
 </html>
