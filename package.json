@@ -1,0 +1,28 @@
+{
+  "name": "project-template",
+  "version": "1.0.29",
+  "description": "Project Template",
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "author": "DAWN Inc.",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.0.0",
+    "gulp": "^3.9.1",
+    "gulp-html-validator": "0.0.5",
+    "gulp-intercept": "^0.1.0",
+    "gulp-minify": "^2.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-prettier": "github:nozomuikuta/gulp-prettier#master",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sass-glob": "^1.0.8",
+    "postcss-csscomb": "^1.0.2"
+  }
+}
