@@ -3,8 +3,8 @@
  *
  * Author: DAWN Inc.
  * Since:   2017-03-25
- * Update:  -
- * Version: 1.0
+ * Update:  2017-03-25
+ * Version: 1.0.0
  * License: MIT (http://www.opensource.org/licenses/mit-license.php, http://sourceforge.jp/projects/opensource/wiki/licenses%2FMIT_license)
  * Comment: 右記を参考に作成(右記を参考に作成(https://github.com/thecreation/breakpoints-js)
  */
@@ -33,9 +33,7 @@
          * ブレイクポイントの情報を格納するオブジェクト
          * @type {Object}
          */
-        var newBreakpoints = {
-            key: 'value'
-        };
+        var newBreakpoints = {};
 
         // 引数がオブジェクトではない場合、何もせず終了する
         if ($.type(breakpoints) !== 'object') {
@@ -143,7 +141,7 @@
      * @return {undefined} undefined
      */
     $.breakpoints.on = function(key, fn, immediate) {
-        var obj = $.breakpoints(key);
+        var obj = $.breakpoints.get(key);
         var matchMedia = $.type(obj) === 'object' ? obj['media'] : null;
 
         // matchMediaがなければ何もせず終了する
@@ -177,7 +175,7 @@
      * @return {undefined} undefined
      */
     $.breakpoints.off = function(key, fn) {
-        var obj = $.breakpoints(key);
+        var obj = $.breakpoints.get(key);
         var matchMedia = $.type(obj) === 'object' ? obj['media'] : null;
 
         // matchMediaがなければ何もせず終了する
