@@ -1,6 +1,6 @@
 {
-  "name": "jquery.autoHeight.js",
-  "version": "1.0.3",
+  "name": "jquery.breakpoints.js",
+  "version": "1.0.4",
   "description": "",
   "scripts": {
     "gulp": "gulp"
