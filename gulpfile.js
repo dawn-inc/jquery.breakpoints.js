@@ -5,9 +5,10 @@
  */
 const gulp = require('gulp');
 const gutil = require('gulp-util');
-const minify = require('gulp-minify');
 const plumber = require('gulp-plumber');
+const cached = require('gulp-cached');
 const prettier = require('gulp-prettier');
+const minify = require('gulp-minify');
 
 /**
  * タスクランナー用設定
@@ -28,17 +29,22 @@ const filePattern = {
  * JavaScriptをコードフォーマットするタスク
  */
 gulp.task('javascript', () => {
+  // Prettierのフォーマット設定
+  const prettierArgs = {
+    printWidth: 80,
+    tabWidth: 4,
+    useTabs: false,
+    semi: true,
+    singleQuote: true,
+    trailingComma: 'none',
+    bracketSpacing: true
+  };
+
   return gulp.src(filePattern.javascript, { base: baseDir.src })
     .pipe(plumber())
-    .pipe(prettier({
-      printWidth: 80,
-      tabWidth: 4,
-      useTabs: false,
-      semi: true,
-      singleQuote: true,
-      trailingComma: 'none',
-      bracketSpacing: true
-    }))
+    // 無限ループ回避のため、ファイルをキャッシュする(キャッシュ名はjavascript)
+    .pipe(cached('javascript'))
+    .pipe(prettier(prettierArgs))
     .pipe(gulp.dest(baseDir.src))
     .pipe(minify({
       ext: {
